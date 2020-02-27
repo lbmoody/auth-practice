@@ -13,11 +13,11 @@ MongoClient.connect(CONN_URL,{ useNewUrlParser: true }, function (err, client) {
     mongoClient = client;
 })
 
-let redisClient = null;
-redisClient = redis.createClient({
-    prefix: 'node-sess:',
-    host: 'localhost'
-});
+let redisClient = redis.createClient(process.env.REDIS_URL);;
+// redisClient = redis.createClient({
+//     prefix: 'node-sess:',
+//     host: 'localhost'
+// });
 
 let app = express();
 // parse application/x-www-form-urlencoded
